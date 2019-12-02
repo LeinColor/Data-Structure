@@ -1,2 +1,8 @@
-﻿  main.cpp
-  Data Structure.vcxproj -> D:\LeinProject\Debug\Data Structure.exe
+﻿  LUStack.cpp
+main.obj : error LNK2019: "public: __thiscall LU::Stack<int>::Stack<int>(void)" (??0?$Stack@H@LU@@QAE@XZ) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: __thiscall LU::Stack<int>::~Stack<int>(void)" (??1?$Stack@H@LU@@QAE@XZ) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: void __thiscall LU::Stack<int>::push(int &&)" (?push@?$Stack@H@LU@@QAEX$$QAH@Z) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: void __thiscall LU::Stack<int>::pop(void)" (?pop@?$Stack@H@LU@@QAEXXZ) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: bool __thiscall LU::Stack<int>::empty(void)const " (?empty@?$Stack@H@LU@@QBE_NXZ) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: int __thiscall LU::Stack<int>::top(void)const " (?top@?$Stack@H@LU@@QBEHXZ) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+D:\LeinProject\Debug\Data Structure.exe : fatal error LNK1120: 6개의 확인할 수 없는 외부 참조입니다.
