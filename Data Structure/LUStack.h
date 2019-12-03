@@ -62,7 +62,7 @@ namespace LU {
 			capacity *= 2;
 			T* temp = new T[capacity];
 
-			for (size_t i = 0; i < index; i++) {
+			for (size_t i = 0; i < index + 1; i++) {
 				temp[i] = data[i];
 			}
 

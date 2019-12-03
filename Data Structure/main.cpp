@@ -5,10 +5,10 @@
 int main()
 {
 	LU::Stack<int> s;
-	int p = 1;
-	s.push(p);
-	s.push(2);
-	s.push(3);
+
+	for (int i = 1; i <= 500; i++) {
+		s.push(i);
+	}
 
 	while (!s.empty()) {
 		std::cout << s.top() << " " << std::endl;
