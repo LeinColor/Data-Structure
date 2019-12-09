@@ -2,9 +2,17 @@
 #include <cassert>
 
 namespace LU {
-	template<typename T>
+	template<typename T, typename Container = std::allocator<T>>
 	class Stack {
 	public:
+		using value_type			= T;
+		using pointer				= T*;
+		using const_pointer			= const T*;
+		using void_pointer			= void*;
+		using const_void_pointer	= const void*;
+		using size_type				= std::size_t;
+		using difference_type		= std::ptrdiff_t;
+
 		// default constructor
 		Stack();
 
@@ -41,12 +49,16 @@ namespace LU {
 		// index is the pointer to indicate data
 		size_t index;
 
-		const size_t MAX_CAPACITY = static_cast<size_t>(-1);
+		static constexpr size_t MAX_CAPACITY = static_cast<size_t>(-1);
+		static constexpr size_t INITIAL_CAPACITY = 10;
+		static constexpr double EXPAND_FACTOR = 1.5;
 	};
 
 	template<typename T>
-	inline Stack<T>::Stack() : data(new T[10]), capacity(10), index(static_cast<size_t>(-1))
-	{}
+	inline Stack<T>::Stack() : capacity(INITIAL_CAPACITY), index(static_cast<size_t>(-1))
+	{
+		data = static_cast<T*>(operator new(sizeof(T) * INITIAL_CAPACITY));
+	}
 
 	template<typename T>
 	inline Stack<T>::~Stack() 
@@ -59,11 +71,11 @@ namespace LU {
 	inline void Stack<T>::push(const T& value)
 	{
 		if (index != MAX_CAPACITY && capacity <= index + 1) {
-			capacity *= 2;
-			T* temp = new T[capacity];
+			capacity = static_cast<double>(capacity) * EXPAND_FACTOR;
+			T* temp = static_cast<T*>(operator new(sizeof(T) * capacity));
 
 			for (size_t i = 0; i < index + 1; i++) {
-				temp[i] = data[i];
+				temp[i] = std::move(data[i]);
 			}
 
 			delete[] data;
